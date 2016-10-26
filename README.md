@@ -5,7 +5,9 @@ IoT Workshop @TechHub
 About
 -----
 
-The goal of this workshop is to get people working with the IoT services from Microsoft Azure and to see how to integrate them with various operating systems and programming languages. There sessions presented will consist of a demo, accompanied by a step-by-step tutorial both on Windows + Visual Studio + C# + Windows IoT Core (on a Raspberry Pi 3) and Mac/Ubuntu + NodeJS/Python + Raspbian (on a Raspberry Pi 3).
+The goal of this workshop is to get people working with the IoT services from Microsoft Azure and to see how to integrate them with various operating systems and programming languages. 
+
+The sessions presented will consist of a demo, accompanied by a step-by-step tutorial both on Windows + Visual Studio + C# + Windows IoT Core (on a Raspberry Pi 3) and Mac/Ubuntu + NodeJS/Python + Raspbian (on a Raspberry Pi 3).
 
 For the duration of the workshop, we will provide Raspberry Pi 3 boards with Windows 10 IoT Core installed, but you can come with your own board or with Raspbian on a MicroSD card.
 
@@ -34,8 +36,8 @@ Afer we have installed the laptop and Raspberry requirements, we also need an Az
 At this point, we can test our development environment by running the Blinky LED application on [Windows](link-to-blinky-led-windows) or on [Raspbian](link-to-blinky-led-raspbian).
 
 
-[Session 2 - Getting started with Azure and deploying Azure IoT Hub](link-to-session-2)
----------------------------------------------------------------------------------------
+Session 2 - Getting started with Azure and deploying Azure IoT Hub
+-------------------------------------------------------------------
 In this session we will get familiar with the Azure portal and what services are offered and we will deploy an Azure IoT Hub.
 We will also get started with the Azure Command Line and we will register the Raspberry Pi with our Hub.
 
@@ -58,8 +60,8 @@ In this session we will send messages and commands from the Cloud (through IoT H
 We will take a look at Azure Stream Analytics and we will send data from IoT Hub --> Stream Analytics --> SQL database, Message Bus, Azure Storage and other services
 
 
-Session 6 - Demo of intelligent bot that sends messages and commands to the device
-----------------------------------------------------------------------------------
+Session 6 - Demo of bot that sends messages and commands to the device
+-----------------------------------------------------------------------
 
-Session 7 - Demo of Xamarin application that sends messages and commands to the device
----------------------------------------------------------------------------------------
+Session 7 - Demo of Xamarin app that sends messages and commands to the device
+------------------------------------------------------------------------------
