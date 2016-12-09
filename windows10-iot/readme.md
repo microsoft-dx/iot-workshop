@@ -19,3 +19,6 @@ Session 1 - [Getting your development environment ready](session01/readme.md)
 -----------------------------------------------------------------------------
 
 In this session we will go through the process of installing Windows 10 IoT Core on a Raspberry Pi 3.
+
+Session 2 - [Getting started with UWP and Windows IoT Core](session02/readme.md)
+---------------------------------------------------------------------------------
