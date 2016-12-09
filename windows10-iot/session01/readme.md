@@ -88,4 +88,4 @@ First of all, [download and install Visual Studio Community 2015 from here](http
 
 Then, [download and install the Windows IoT Core Project Templates from Visual Studio Gallery](https://marketplace.visualstudio.com/items?itemName=MicrosoftIoT.WindowsIoTCoreProjectTemplates).
 
-[Enable the developer mode on the device running Visual Studio by following the instructions here].(https://msdn.microsoft.com/windows/uwp/get-started/enable-your-device-for-development).
+[Enable the developer mode on the device running Visual Studio by following the instructions here](https://msdn.microsoft.com/windows/uwp/get-started/enable-your-device-for-development).
