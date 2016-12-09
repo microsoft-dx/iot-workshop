@@ -6,7 +6,7 @@ Introduction
 
 Windows 10 IoT Core is a version of Windows 10 that is optimized for smaller devices with or without a display, and that runs on the Raspberry Pi 2 and 3, Arrow DragonBoard 410c & MinnowBoard MAX. Windows 10 IoT Core utilizes the rich, extensible Universal Windows Platform (UWP) API for building great solutions.  
 
-![media/win-iot-boards.JPG]
+![](media/win-iot-boards.JPG)
 
 One of the main advantages of Windows 10 IoT Core is that it allows you to run UWP applications - applications that you write once and can run on laptops, tablets, phones, XBox, IoT devices or even on HoloLens.
 
