@@ -15,7 +15,7 @@ UWP apps just work on IoT Core, just as they do on other Windows 10 editions. A 
 In addition to the traditional UI apps, IoT Core has added a new UWP app type called “Background Applications”. These applications do not have a UI component, but instead have a class that implements the “IBackgroundTask” interface. They then register that class as a “StartupTask” to run at system boot. Since they are still UWP apps, they have access to the same set of APIs and are supported from the same language. The only difference is that there is no UI entry point.
 
 
-Session 1 - Getting your development environment ready
--------------------------------------------------------
+Session 1 - [Getting your development environment ready](session01/readme.md)
+-----------------------------------------------------------------------------
 
 In this session we will go through the process of installing Windows 10 IoT Core on a Raspberry Pi 3.
