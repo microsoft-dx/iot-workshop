@@ -18,7 +18,7 @@ Traditional UWP Apps - Headed devices
 
 UWP applications just work on IoT Core just as they do on other Windows editions. The sample UWP application from Visual Studio will properly deploy on the IoT device (provided you set the target for an ARM device).
 
-Let's write a very simple UWP application and deploy it to our Raspberry Pi. Start Visual Studio and create a new project
+Let's write a very simple UWP application and deploy it to our Raspberry Pi. Start Visual Studio and create a new project.
 
 ![](../media/create-blank-app.JPG)
 
@@ -54,7 +54,47 @@ We said that we will run the same application on the Raspberry Pi. First of all 
 
 ![](../media/blank-app-remote.JPG)
 
+You can find the complete application in the [SimpleRaspberryApplication](SimpleRaspberryApplication) folder.
 
+
+Background Applications
+-----------------------
+
+In addition to the traditional UI apps, IoT Core has added a new UWP app type called “Background Applications”. These applications do not have a UI component, but instead have a class that implements the “IBackgroundTask” interface. They then register that class as a “StartupTask” to run at system boot. Since they are still UWP apps, they have access to the same set of APIs and are supported from the same language. The only difference is that there is no UI entry point.
+
+Non-UWP Apps
+------------
+
+We also fully support traditional Win32 app types like Console Apps and NT Services. These apps are buit and run the same way as on Windows 10 Desktop. There is also an IoT Core C++ Console project template to make it easy to build from VS.
+
+There are two main limitations on these non-UWP applications:
+
+- no Win32 UI Apps - since there is no Win32 UI stack on IoT Core, no Win32 app will be able to directly display UI.
+- C++ Apps Only: The only .Net Framework supported on IoT Core supports only UWP apps and so native Win32 apps are supported.
+
+
+IoT Core supports a wide range of programming languages:
+
+In-Box languages
+----------------
+Traditional UWP languages ship with support in Visual Studio by default. All of the In-Box languages support both UI and Background Applications
+ 
+ * Languages
+  * C#
+  * C++
+  * Javascript
+  * Visual Basic
+
+IoT Focused Languages
+---------------------
+ The IoT targeted languages require the download of the "Windows IoT Core Project Templates" from the Visual Studio **Tools->Extensions and Updates** manager.  The IoT Focused languages support only Background Applications. You can also build *Windows Runtime Components* using C#, C++, or Visual Basic and then reference those libraries from any other language (except Python).
+* Languages
+ * Arduino Wiring
+ * Node.js
+ * Python
+
+
+> More information on [the Official Microsoft Documentation](https://developer.microsoft.com/en-us/windows/iot/docs/buildingappsforiotcore)
 
 Conclusion
 -----------
