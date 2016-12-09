@@ -69,11 +69,11 @@ At this point, there are multiple ways you can connect to your board in order to
 
 - connect using the Windows IoT Remote Client - first you should enable the Remove Server that allows the connection using a client application.
 
-![](../media/remove-server.JPG)
+![](../media/remote-server.JPG)
 
 Then, [install the Windows IoT Remote Client from the Windows Store](https://www.microsoft.com/store/apps/9nblggh5mnxz) and connect using the IP address of your board.
 
-![](../media/remove-client-app.JPG)
+![](../media/remote-client-app.JPG)
 
 - connect using SSH (Secure Shell) - this allows you to remotely administer and configure the board using a command-line interface. First, you need a SSH client. If you are on a Linux, Mac or have installed Bash on Windows 10, then the SSH client should be already installed. [Otherwise, install a client such as PuTTY](http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe).
 
