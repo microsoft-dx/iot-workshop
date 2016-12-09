@@ -17,3 +17,5 @@ In addition to the traditional UI apps, IoT Core has added a new UWP app type ca
 
 Session 1 - Getting your development environment ready
 -------------------------------------------------------
+
+In this session we will go through the process of installing Windows 10 IoT Core on a Raspberry Pi 3.
