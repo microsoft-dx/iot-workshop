@@ -24,7 +24,7 @@ After installing the application, start it, paste the **Connection string - prim
 
 Then, in the **Management** tab click **Create** button to create a new device identity. Provide a device id or name, optionally modify the primary and secondary key and click **Create**. 
 
-![](../media/device-eplorer-device.JPG)
+![](../media/device-explorer-device.JPG)
 
 At this point, we can copy the **Connection string** that was created for our device and use it later in our application.
 
