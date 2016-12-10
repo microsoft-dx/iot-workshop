@@ -22,3 +22,10 @@ In this session we will go through the process of installing Windows 10 IoT Core
 
 Session 2 - [Getting started with UWP and Windows IoT Core](session02/readme.md)
 ---------------------------------------------------------------------------------
+
+In this session we will verify that the installation of Visual Studio was successful and will create a very simple UWP application that will run on the Raspberry.
+
+Session 3 - [Sending Device-to-Cloud messages](session03/readme.md)
+--------------------------------------------------------------------
+
+In this session we will build a UWP application that sends data to an Azure IoT Hub.
