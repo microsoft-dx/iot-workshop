@@ -71,3 +71,76 @@ The Visual Studio extension will install a bunch of NuGet packages required for 
 
 ![](../media/connected-service-added-items.JPG)
 
+Together with the packages, this also adds a class called `AzureIoTHub.cs`.
+
+![](../media/azure-iothub-cs.JPG)
+
+This is only a very simple demo and we will not use it. In fact, we will delete this class and add a new one called `IoTHubConnection`.
+
+```
+    public class IoTHubConnection : IDisposable
+    {
+        private DeviceClient _deviceClient { get; set; }
+
+        public IoTHubConnection()
+        {
+            _deviceClient = DeviceClient.CreateFromConnectionString(GetConnectionString(), TransportType.Amqp));
+        }
+
+        public async Task SendEventAsync(string payload)
+        {
+            await _deviceClient.SendEventAsync(new Message(Encoding.ASCII.GetBytes(payload)));
+        }
+
+        private string GetConnectionString()
+        {
+            return "your-device-connection-string";
+        }
+
+        public void Dispose()
+        {
+            _deviceClient.Dispose();
+        }
+    }
+```
+
+This is a very simple implementation of a class that has a method that sends a `string` payload to an Azure IoT Hub. Notice that it implements the `IDisposable` interface since the `DeviceClient` class also implements it and we are using an instance of the `DeviceClient` class.
+
+Then, in the `MainPage.xaml` add a `TextBlock` in the center of the screen.
+
+```
+<TextBlock x:Name="randomTextBlock" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Placeholder" VerticalAlignment="Center"/>
+```
+
+![](../media/text-block.JPG)
+
+
+Then, in `MainPage.xaml.cs` add an event handler for the `Loaded` event that fires up when the page finised loading. In this event handler we will create a timer and ever 3 seconds we will send a string to the IoT Hub.
+
+```
+    public sealed partial class MainPage : Page
+    {
+        public MainPage()
+        {
+            this.InitializeComponent();
+
+            this.Loaded += (sender, eventArgs) =>
+            {
+                DispatcherTimer timer = new DispatcherTimer();
+
+                timer.Tick += async (s, e) =>
+                {
+                    using (var iotHubConnection = new IoTHubConnection())
+                    {
+                        var message = $"Random string at {DateTime.Now}";
+                        await iotHubConnection.SendEventAsync(message);
+                        this.randomTextBlock.Text = message;
+                    }
+                };
+
+                timer.Interval = TimeSpan.FromSeconds(3);
+                timer.Start();
+            };       
+        }
+    }
+```
