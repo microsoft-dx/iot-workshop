@@ -148,3 +148,25 @@ Then, in `MainPage.xaml.cs` add an event handler for the `Loaded` event that fir
 First we will run the application on the laptop and see if it really works. To verify, start the Device Exploerer application again and press the **Monitor** button under the **Data** tab and the application will start monitoring all messages that arrive from the device to IoT Hub. 
 
 ![](../media/uwp-local-device-explorer.JPG)
+
+
+Running the application on the Raspberry Pi
+-------------------------------------------
+
+First of all, we need to find out the IP of our Raspberry. Normally, it should show up in the IoT Dashboard application under **My devices**, but if it doesn't, [see how to find the IP.](../session01#what-if-my-board-is-connected-to-network-but-doesnt-show-in-the-iot-dashboard-application).
+
+To run on the Raspberry, first we need to change the target of the build to ARM.
+
+![](../media/target.JPG)
+
+Then, click the **Device** dropdown and select a **Remote Device**. If your device was auto detected by Visual Studio (or by the IoT Dashboard app), it will applear here. Otherwise, enter the IP Address.
+
+![](../media/remote-device.JPG)
+
+Then click the **Run** button. This will rebuild the application targeting ARM and will start the deployment to the Raspberry.
+
+> If there is an error during the deployment: `Failed to establish connection to the device due to protocol incompatibility. Please try again, and if this error persists, please try restarting the target device. Device supports protocol 'Sirep2'.`, simply restart the Raspberry.
+
+![](../media/iot-hub-app-rpi.JPG)
+
+You can see that the same application is now running on the Raspberry and you can see the messages arriving in the IoT Hub with the Device Explorer.
