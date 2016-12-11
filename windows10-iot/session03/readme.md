@@ -115,7 +115,7 @@ Then, in the `MainPage.xaml` add a `TextBlock` in the center of the screen.
 ![](../media/text-block.JPG)
 
 
-Then, in `MainPage.xaml.cs` add an event handler for the `Loaded` event that fires up when the page finised loading. In this event handler we will create a timer and ever 3 seconds we will send a string to the IoT Hub.
+Then, in `MainPage.xaml.cs` add an event handler for the `Loaded` event that fires up when the page finised loading. In this event handler we will create a timer and every 3 seconds we will send a string to the IoT Hub.
 
 ```
     public sealed partial class MainPage : Page
@@ -144,3 +144,7 @@ Then, in `MainPage.xaml.cs` add an event handler for the `Loaded` event that fir
         }
     }
 ```
+
+First we will run the application on the laptop and see if it really works. To verify, start the Device Exploerer application again and press the **Monitor** button under the **Data** tab and the application will start monitoring all messages that arrive from the device to IoT Hub. 
+
+![](../media/uwp-local-device-explorer.JPG)
