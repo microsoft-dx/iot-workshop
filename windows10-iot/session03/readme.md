@@ -32,3 +32,7 @@ At this point, we can copy the **Connection string** that was created for our de
 
 Unless we have this connection string that is associated with our IoT Hub instance, we will not be able to send data to the IoT Hub.
 
+> There is also a [Node command line interface called iothub-explorer](https://github.com/Azure/iothub-explorer) that allows you to manage IoT Hub instances that we will use in Linux/Mac environments whwre the Device Exploerer application is not available. While you can also use it in Windows environments, it is recommended that you use the Device Explorer.
+
+
+
