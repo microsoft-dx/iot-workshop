@@ -43,7 +43,7 @@ In Visual Studio, create a **New Project** and under **Visual C#** choose the **
 
 A new dialog appears prompting you to choose the minimum and the target version of Windows for your application. You can leave the default values and press **Ok**.
 
-![](../media/upw-target-version.JPG)
+![](../media/uwp-target-version.JPG)
 
 At this point, we will use a [Visual Studio Extension called **Connected Service for Azure IoT Hub**](http://aka.ms/azure-iot-hub-vs-cs-vs-gallery). Install the extension, then right click on the **References** section from **Solution Explorer**.
 
