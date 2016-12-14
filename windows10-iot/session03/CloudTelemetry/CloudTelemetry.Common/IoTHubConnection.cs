@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CloudTelemetry.Common
 {
-    public class IoTHubConnection : IDisposable
+    public class IoTHubConnection
     {
         private DeviceClient _deviceClient { get; set; }
 
@@ -21,12 +21,7 @@ namespace CloudTelemetry.Common
 
         private string GetConnectionString()
         {
-            return "your-device-connection-string";
-        }
-
-        public void Dispose()
-        {
-            _deviceClient.Dispose();
+            return "your-connection-string;
         }
     }
 }
