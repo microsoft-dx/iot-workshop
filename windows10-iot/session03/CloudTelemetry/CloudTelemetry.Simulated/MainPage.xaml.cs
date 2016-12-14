@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+﻿using CloudTelemetry.Common;
+using Newtonsoft.Json;
+using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -22,9 +13,34 @@ namespace CloudTelemetry.Simulated
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private IoTHubConnection _iotHubConnection { get; set; }
+        private Random _random { get; set; }
         public MainPage()
         {
             this.InitializeComponent();
+
+            _iotHubConnection = new IoTHubConnection();
+            _random = new Random();
+
+            this.Loaded += (sender, routedEventArgs) =>
+            {
+
+                DispatcherTimer timer = new DispatcherTimer();
+                timer.Tick += async (s, e) =>
+                {
+                    var temperatureTelemetry = new TemperatureTelemetry()
+                    {
+                        Time = DateTime.Now.ToString("yyyy - MM - dd HH: mm:ss.fff"),
+                        Temperature = Math.Round(_random.NextDouble() * (40 - 20) + 20, 2)
+                };
+
+                    this.temperatureBlock.Text = $"Temperature: {temperatureTelemetry.Temperature.ToString()}";
+                    await _iotHubConnection.SendEventAsync(JsonConvert.SerializeObject(temperatureTelemetry));
+                };
+                timer.Interval = TimeSpan.FromSeconds(3);
+                timer.Start();
+
+            };
         }
     }
 }
