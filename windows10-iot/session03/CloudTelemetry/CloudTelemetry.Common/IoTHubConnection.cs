@@ -21,7 +21,7 @@ namespace CloudTelemetry.Common
 
         private string GetConnectionString()
         {
-            return "your-connection-string;
+            return "your-connection-string";
         }
     }
 }
