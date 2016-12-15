@@ -170,3 +170,91 @@ Then click the **Run** button. This will rebuild the application targeting ARM a
 ![](../media/iot-hub-app-rpi.JPG)
 
 You can see that the same application is now running on the Raspberry and you can see the messages arriving in the IoT Hub with the Device Explorer.
+
+
+Sending temperature telemetry to the Cloud
+-------------------------------------------
+
+So far we only sent some dummy text messages. Now it's time to send some temperature telemetry (either from some sensors or generated).
+
+The `CloudTelemetry` solution contains 3 projects: 
+
+- `CloudTelemetry.Common`, which contains the classes we will use in both cases: `TemperatureTelemetry` and `IoTHubConnection`
+- `CloudTelemetry.Simulated`, which simulates some random temperature with values between 20 and 40
+- `CloudTelemetry.SenseHat`, which uses the SenseHAT board to get the actual temperature
+
+![](../media/multiple-projects.JPG)
+
+In order to run this application, first choose what project you will run: `CloudTelemetry.Simulated` or `CloudTelemetry.SenseHat` based on what device you have available.
+When you device on the project, right click it and select **Set as StartUp Project**.
+
+
+![](../media/set-startup-project.JPG)
+
+
+Then, just as earlier, deploy the application to the Raspberry and start debugging it.
+
+
+Explaining the `CloudTelemetry.SenseHat` project
+-------------------------------------------------
+
+While the project where we simulate the temperature telemetry is pretty straightforward (we simple get a random double between 20 and 40 and send it to IoT Hub), the project where we get the data form the SenseHat has some additional moving parts: the `SenseHat` class:
+
+```
+    public class SenseHat : IDisposable
+    {
+        private ISenseHat _senseHat { get; set; }
+
+        public async Task Activate()
+        {
+            _senseHat = await SenseHatFactory.GetSenseHat().ConfigureAwait(false);
+
+            _senseHat.Display.Clear();
+            _senseHat.Display.Update();
+        }
+
+        public TemperatureTelemetry GetTemperature()
+        {
+            while (true)
+            {
+                _senseHat.Sensors.HumiditySensor.Update();
+
+                if (_senseHat.Sensors.Temperature.HasValue)
+                {
+                    return new TemperatureTelemetry()
+                    {
+                        Time = DateTime.UtcNow.AddHours(3).ToString("yyyy-MM-dd HH:mm:ss.fff"),
+                        Temperature = Math.Round(_senseHat.Sensors.Temperature.Value, 2)
+                    };
+                }
+
+                else new ManualResetEventSlim(false).Wait(TimeSpan.FromSeconds(0.5));
+            }
+        }
+
+        public void Dispose()
+        {
+            _senseHat.Dispose();
+        }
+    }
+```
+
+> You can [find more details about how this class was created and more here](https://radu-matei.github.io/blog/rpi-sensehat-telemetry/#the-sense-hat-communication-project).
+
+Basically, this is a class that only exposes functionality related with the temperature telemetry, but you can expand it to do all the things you want.
+
+We obtain the actual object that does the communication with the board through a `SenseHatFactory` and we use this object throughout the class. In the `Activate` method, we get the reference ti the `ISenseHat` object through the factory, then turn the LED matrix off (we don't need to keep it on at all times).
+
+The `GetTemperature` method is pretty straightforward: we check if the temperature sensor has value. If it does, we create a new `TemperatureTelemetry` object with the corresponding timestamp and temperature that we return. If the sensor doesn’t have a value, we wait half a second and try again.
+
+In the same way we can see the data going in through the Device Explorer.
+
+Conclusion
+----------
+
+We managed to create a very simple Universal Windows application that sends temperature telemetry (real or simulated) through IoT Hub.
+
+Next steps
+----------
+
+Next, we will create some Cloud-to-Device messages that will make the LED matrix go on or off.
