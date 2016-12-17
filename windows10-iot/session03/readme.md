@@ -257,4 +257,4 @@ We managed to create a very simple Universal Windows application that sends temp
 Next steps
 ----------
 
-Next, we will create some Cloud-to-Device messages that will make the LED matrix go on or off.
+Next, we will create some Cloud-to-Device messages that will make the LED matrix go on or off (or in the simulated case will notify on the screen).
