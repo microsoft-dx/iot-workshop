@@ -92,3 +92,7 @@ device.create_sas(600)
 
 print(device.send(b"{message: 'This is awesome! Hello from Python!'}"))
 ```
+
+Executing this file with `python3 send-simple-message.py` will send a single message to the IoT Hub:
+
+![](../media/iot-hub.python.png)
