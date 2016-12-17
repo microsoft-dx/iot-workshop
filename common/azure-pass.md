@@ -22,3 +22,8 @@ Once you have those, follow the steps below to get your subscription. The [Azure
 4. On the next screen, click **Sign In** and log in with your Microsoft Account, if you weren't already logged in.
 
 5. Fill in the form and click **Activate** to activate your Azure Pass.
+
+
+> [This video tutorial shows how to activate your Azure Pass subscription](https://channel9.msdn.com/Blogs/joeraio/Activating-Microsoft-Azure-Subscription-Using-Azure-Pass).
+
+> You can [find more information about the Microsoft Azure Pass here](https://azure.microsoft.com/en-gb/offers/azure-pass/).
